@@ -1,0 +1,90 @@
+/* -------= примесь для рейтинга =------- */
+
+//Значения переменных:
+//@img: url до спрайта
+//@imgHeight: высота спрайта
+//@imgWidth: ширина ...
+//@starSize: размер одной звезды (высота или ширина без разницы, т.к. по сути "звезда" это "квадрат")
+//@betweenStars: расстояние между звездами
+//Все расстояния должны быть четными
+.all-stars-original (
+            @img:           url(../../static/img/common/orange_stars.png),
+            @imgHeight:     34px,
+            @imgWidth:      88px,
+            @starSize:      16px,
+            @betweenStars:  2px
+           ) {
+    a, ul, li,
+    {
+        margin:0;
+        padding:0;
+        border:0;
+        outline:0;
+        font-size:100%;
+        vertical-align:baseline;
+        background:transparent;
+    }
+
+    ul {
+        list-style:none;
+    }
+    .voting {
+        position:relative;
+        margin:0 0 0.2em;
+        width: @imgWidth;
+        height: (@imgHeight / 2);
+        overflow:hidden;
+        background: @img 0 -(@imgHeight / 2) no-repeat;
+
+
+	}
+	.voting li {
+		float:left;
+		}
+	.voting a {
+		position:absolute;
+		top:0;
+		left:0;
+		display:block;
+		height: (@imgHeight / 2);
+		text-indent:-9999px;
+		}
+	.voting a.cur,
+	.voting a:hover,
+	.voting:hover a.cur:hover,
+	.voting.phover a.cur:hover,
+	.voting:hover a:hover,
+	.voting.phover a:hover {
+		background: @img no-repeat;
+        .transition(0.5s);
+		}
+	.voting:hover a.cur,
+	.voting.phover a.cur {
+		background:none;
+		}
+	.voting .one a {
+		width:     (@starSize + @betweenStars / 2)          ;                                       //17px;
+		z-index:5;
+		}
+	.voting .two a {
+		width:     (@starSize * 2 + @betweenStars * 1 + @betweenStars / 2)           ;              //35px;
+		z-index:4;
+		}
+	.voting .three a {
+		width:       (@starSize * 3 + @betweenStars * 2 + @betweenStars / 2)        ;              //53px;
+		z-index:3;
+		}
+	.voting .four a {
+		width:      (@starSize * 4 + @betweenStars * 3 + @betweenStars / 2)         ;              //71px;
+		z-index:2;
+		}
+	.voting .five a {
+		width:      @imgWidth         ;                                       //88px;
+		z-index:1;
+		}
+    .all-stars__result {
+        margin-top: 0;
+    }
+}
+
+/* -------= примесь для рейтинга =------- */
